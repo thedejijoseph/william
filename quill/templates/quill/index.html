@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Quill Notes</title>
+</head>
+<body>
+    <h1>Quill Notes</h1>
+    {% if not all %}
+        <p>There are no quill notes at this time.</p>
+        <a href="{% url 'quill-notes:editor' %}">Create one..</a>
+    {% else %}
+        <p>List of notes..</p>
+        <a href="{% url 'quill-notes:editor' %}">Create more</a>
+        {% for note in all %}
+            <h3><a href="{% url 'quill-notes:view_note' note.note_id %}">{{ note.title }}</a></h3>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
