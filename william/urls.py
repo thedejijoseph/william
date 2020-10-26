@@ -21,5 +21,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('quill-notes', include('quill.urls', namespace='quill-notes')),
+    path('quill-notes/', include('quill.urls', namespace='quill-notes')),
 ]

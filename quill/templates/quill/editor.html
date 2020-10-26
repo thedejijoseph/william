@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create new Quill Note</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quill/vendor/quilljs/quill.snow.css' %}">
+
+</head>
+<body>
+    <form action="">
+        <h3>QuillNote Editor</h3>
+
+        <input type="hidden" id="note-id" name="note-id" value="{{ note_id }}">
+        {% if valid_note %} <input type="hidden" name="valid" value="true" id="valid"> {% endif %}
+
+        Title: <input id="note-title" type="text" value=""> <br>
+        <div id="editor"></div>
+        <input id="save-btn" type="button" value="Save">
+        <span id="feedback"></span>
+    </form>
+
+    <script src="{% static 'quill/vendor/quilljs/quill.js' %}"></script>
+    <script src="{% static 'quill/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'quill/custom/scripts/app.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note: {{ note.title }}</title>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quill/vendor/quilljs/quill.snow.css' %}">
+
+</head>
+<body>
+    <a href="{% url 'quill-notes:editor' %}?note_id={{ note.note_id }}">Edit</a><br>
+
+    <input type="hidden" id="note-id" name="note-id" value="{{ note.note_id }}">
+
+    <h3 id="note-title"></h3><hr>
+    <div id="display"></div>
+
+
+    <script src="{% static 'quill/vendor/quilljs/quill.js' %}"></script>
+    <script src="{% static 'quill/vendor/jquery/jquery.js' %}"></script>
+    <script>
+        $.ajax({
+            method: 'GET',
+            url: '/quill-notes/api/fetch',
+            data: {note_id: $('#note-id').val()},
+            success: function(resp, status){
+                $('#note-title').text(resp.data.title)
+                $('#display').html(resp.data.raw_text)
+            }
+        })
+    </script>
+</body>
+</html>
