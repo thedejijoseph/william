@@ -36,11 +36,7 @@ def view_note(request, note_id):
     if request.method == 'GET':
         try:
             note = QuillNote.objects.get(note_id=note_id)
-            delta = note.quill_delta
-            from django.utils.safestring import mark_safe
-            safe_delta = mark_safe(delta)
-            print(delta, '\n\n', (safe_delta))
-            return render(request, 'quill/note.html', context={'note': note, "safe": safe_delta})
+            return render(request, 'quill/note.html', context={'note': note})
         except:
             # raise
             return HttpResponse('Invalid Note ID')

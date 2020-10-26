@@ -13,7 +13,6 @@ def make_response(
             'message': message,
             'data': data
         }
-    
     if not success:
         if not errors:
             raise Exception("Failed response must have a list of errors")

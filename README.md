@@ -4,6 +4,6 @@ I'm working on a blogging app and need to experiment with, beforehand, frontend 
 
 Experimenting with:
 
-+ QuillJS [/quill-notes](/quill-notes)
-+ Editor.js [/editorjs-notes](/editorjs-notes)
-+ TinyMCE [/tiny-notes](/tiny-notes)
++   QuillJS [/quill-notes](/quill-notes)
++   Editor.js [/editorjs-notes](/editorjs-notes)
++   TinyMCE [/tiny-notes](/tiny-notes)
