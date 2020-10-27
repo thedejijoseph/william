@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit notes here..</title>
+
+    {% load static %}
+</head>
+<body>
+    <h3>Editor</h3>
+    <button id="save">Save</button>
+    <span id="feedback"></span>
+    <hr>
+
+    <input type="hidden" name="note-id" id="note-id" value="{{note.note_id}}">
+    
+    Title: <input type="text" id="title">
+    <div id="editor" style="border:3px solid"></div>
+    
+    <script src="{% static 'editorjs/vendor/editor-js/editor.min.js' %}"></script>
+    <script src="{% static 'editorjs/vendor/editor-js/plugins/header.js' %}"></script>
+    <script src="{% static 'editorjs/vendor/editor-js/plugins/list.js' %}"></script>
+    <script src="{% static 'editorjs/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'editorjs/custom/scripts/app.js' %}"></script>
+</body>
+</html>

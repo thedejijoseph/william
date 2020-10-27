@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('quill-notes/', include('quill.urls', namespace='quill-notes')),
+    path('editorjs-notes/', include('editorjs.urls', namespace='editorjs-notes'))
 ]

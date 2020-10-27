@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # custom apps
     'quill',
+    'editorjs',
 
     # third-party apps
     'rest_framework'

@@ -8,7 +8,7 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 
 from .models import QuillNote
-from .utils import *
+from .utils import make_response
 
 def index(request):
     if request.method == 'GET':

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note!</title>
+
+    {% load static %}
+</head>
+<body>
+    <input type="hidden" name="note-id" id="note-id" value="{{note.note_id}}">
+    <a href="{% url 'editorjs-notes:editor' %}?note_id={{note.note_id}}">Edit</a>
+    <h3 id="title"></h3>
+    <div id="display"></div>
+
+    <script src="{% static 'editorjs/vendor/jquery/jquery.js' %}"></script>
+    <!-- <script src="{% static 'editorjs/custom/scripts/app.js' %}"></script> -->
+    <script>
+
+        let convertDataToHtml = (blocks) => {
+            var convertedHtml = "";
+            blocks.map(block => {
+            
+            switch (block.type) {
+                case "header":
+                convertedHtml += `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;
+                break;
+                case "embded":
+                convertedHtml += `<div><iframe width="560" height="315" src="${block.data.embed}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
+                break;
+                case "paragraph":
+                convertedHtml += `<p>${block.data.text}</p>`;
+                break;
+                case "delimiter":
+                convertedHtml += "<hr />";
+                break;
+                case "image":
+                convertedHtml += `<img class="img-fluid" src="${block.data.file.url}" title="${block.data.caption}" /><br /><em>${block.data.caption}</em>`;
+                break;
+                case "list":
+                    let openTag = "";
+                    let closeTag = "";
+
+                    if (block.data.style === "unordered"){
+                        openTag = "<ul>";
+                        closeTag = "</ul>";
+                    }
+                    else if (block.data.style === "ordered") {
+                        openTag = "<ol>";
+                        closeTag = "</ol>";
+                    }
+                convertedHtml += openTag;
+                block.data.items.forEach(function(li) {
+                    convertedHtml += `<li>${li}</li>`;
+                });
+                convertedHtml += closeTag;
+                break;
+                default:
+                console.log("Unknown block type", block.type);
+                break;
+            }
+            });
+            return convertedHtml;
+        }
+
+        let display = (noteId) => {
+            $.ajax({
+                "url": "/editorjs-notes/api/fetch",
+                "method": "GET",
+                "data": {"note_id": noteId},
+                "success": (resp) => {
+                    if (resp.success) {
+                        let html = convertDataToHtml(JSON.parse(resp.data.raw_data).blocks)
+                        $("#display").html(html)
+                        $("#title").text(resp.data.title)
+                    }
+                }
+            })
+        }
+        display($("#note-id").val())
+    </script>
+</body>
+</html>

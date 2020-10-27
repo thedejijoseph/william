@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor JS</title>
+
+    {% load static %}
+</head>
+<body>
+    {% if all %}
+    <a href="{% url 'editorjs-notes:editor' %}">Create more</a>
+    {% for note in all %}
+    <h3><a href="{% url 'editorjs-notes:view_note' note.note_id %}">{{ note.title }}</a></h3>
+    {% endfor %}
+    {% else %}
+    No notes here. <a href="{% url 'editorjs-notes:editor' %}">Create one</a>
+    {% endif %}
+    
+</body>
+</html>
