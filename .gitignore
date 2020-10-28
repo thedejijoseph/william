@@ -146,4 +146,3 @@ dmypy.json
 
 # ignore collected static files
 staticfiles/
-migrations/
