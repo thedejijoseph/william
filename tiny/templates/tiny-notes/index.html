@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiny Notes</title>
+</head>
+<body>
+    <h3>All Tiny Notes</h3>
+    <small>If they exist</small>
+
+    {% if all %}
+    <h5><a href="{% url 'tiny-notes:editor' %}">Create more</a></h5>
+        <ul>
+            {% for note in all %}
+                <li><a href="{% url 'tiny-notes:note' note.public_id %}">{{ note.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h4>No Tiny notes have been created..</h4>
+        <a href="{% url 'tiny-notes:editor' %}">Create one..</a>
+    {% endif %}
+</body>
+</html>
