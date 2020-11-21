@@ -4,8 +4,8 @@ I'm working on a blogging app and need to experiment with, beforehand, frontend 
 
 Experimenting with:
 
-+   QuillJS [/quill-notes](#quill)
-+   Editor.js [/editorjs-notes](#editor.js)
++   QuillJS [/quill-notes](/quill-notes)
++   Editor.js [/editorjs-notes](/editorjs-notes)
 +   TinyMCE [/tiny-notes](/tiny-notes)
 
 ## Notes
@@ -16,10 +16,10 @@ Experiments so far has shown interoperability for data export and import format.
 
 Features needed:
 
-| Editor   | Editor Format | Export format  | Images     | Code highlighting | Load time |
-|----------|---------------|----------------|------------|-------------------|-----------|
-| Quill JS | Single page   | Annotated JSON | Not tested | Not tested        |           |
-| EditorJS | Block-based   |                | Not tested | Not tested        |           |
+| Editor   | Editor Format |  Export format |   Images   | Code highlighting | Load time |
+|----------|:-------------:|:--------------:|:----------:|:-----------------:|:---------:|
+| Quill JS | Single page   | Annotated JSON | Not tested |     Not tested    |           |
+| EditorJS | Block-based   |                | Not tested |     Not tested    |           |
 | TinyMCE  |               |                |            |                   | Very slow |
 
 ___

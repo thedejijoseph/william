@@ -13,6 +13,7 @@ uvicorn = "*"
 python-dotenv = "*"
 whitenoise = "*"
 psycopg2 = "*"
+markdown = "*"
 
 [requires]
 python_version = "3.8"
